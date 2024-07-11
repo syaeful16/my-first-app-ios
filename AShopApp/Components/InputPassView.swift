@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct InputPassView: View {
+    let label: String
+    let hint: String
+    
+    @Binding var value: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 8){
+            Text(label)
+                .font(.system(size: 14))
+            SecureField(hint, text: $value)
+                .textContentType(.password)
+                .font(.system(size: 14))
+                .borderField(1, .borderTextField, .bgTextField)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
 #Preview {
-    InputPassView()
+    InputPassView(label: "Password", hint: "Password", value: .constant("uhuyy cukuy"))
 }

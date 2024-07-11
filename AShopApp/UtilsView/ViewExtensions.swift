@@ -7,12 +7,30 @@
 
 import SwiftUI
 
-struct ViewExtensions: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension View{
+    func hAlign(_ alignment: Alignment)->some View{
+        self
+            .frame(maxWidth: .infinity, alignment: alignment)
     }
-}
-
-#Preview {
-    ViewExtensions()
+    
+    func borderField(_ width: CGFloat, _ border: Color, _ bg: Color)->some View{
+        self
+            .padding(.vertical, 14)
+            .padding(.horizontal, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 5, style: .continuous )
+                    .stroke(border, lineWidth: width)
+                    .background(bg)
+            )
+    }
+    
+    func fillButton(_ bg: Color)->some View{
+        self
+            .padding(.vertical, 14)
+            .padding(.horizontal, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 5, style: .continuous )
+                    .fill(bg)
+            )
+    }
 }

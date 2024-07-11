@@ -6,16 +6,30 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
+    @AppStorage("isAuthenticated") var isAuthenticated: Bool = false
+    @StateObject var loginViewModel = LoginViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if isAuthenticated {
+            VStack {
+                TabView{
+                    StoreMainView()
+                        .tabItem {
+                            Image(systemName: "house")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Image(systemName: "person")
+                        }
+                }
+            }
+        } else {
+            NavigationView {
+                LoginView()
+            }
         }
-        .padding()
     }
 }
 

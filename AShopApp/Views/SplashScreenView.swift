@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SplashScreenView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color.blue
+                .ignoresSafeArea()
+            Text("ASHOP")
+                .font(.system(size: 40))
+                .foregroundStyle(.white)
+                .bold()
+        }
     }
 }
 
